@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CallBackHook } from './components/useMemo/CallBackHook';
+import { Padre } from './components/useMemo/tarea-memo/Padre';
+// import { CallBackHook } from './components/useMemo/CallBackHook';
 // import { MemoHook } from './components/useMemo/MemoHook';
 // import { Memorize } from './components/useMemo/Memorize';
 // import { LayoutEffect } from './components/useLayoutEffect/Layouteffect';
@@ -14,7 +15,7 @@ import { CallBackHook } from './components/useMemo/CallBackHook';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CallBackHook />
+    <Padre />
   </React.StrictMode>,
   document.getElementById('root')
 );

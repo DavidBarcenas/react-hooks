@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FocusScreen } from './components/useRef/FocusScreen';
+import { LayoutEffect } from './components/useLayoutEffect/Layouteffect';
+// import { FocusScreen } from './components/useRef/FocusScreen';
 // import { MultipleCustomHook } from './components/useFetch/MultipleCustomHook';
 // import { FormCustomHook } from './components/useEffect/FormCustomHook';
 // import { SimpleForm } from './components/useEffect/SimpleForm';
@@ -10,7 +11,7 @@ import { FocusScreen } from './components/useRef/FocusScreen';
 
 ReactDOM.render(
   <React.StrictMode>
-    <FocusScreen />
+    <LayoutEffect />
   </React.StrictMode>,
   document.getElementById('root')
 );

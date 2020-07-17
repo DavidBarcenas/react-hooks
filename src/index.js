@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LayoutEffect } from './components/useLayoutEffect/Layouteffect';
+import { Memorize } from './components/useMemo/Memorize';
+// import { LayoutEffect } from './components/useLayoutEffect/Layouteffect';
 // import { FocusScreen } from './components/useRef/FocusScreen';
 // import { MultipleCustomHook } from './components/useFetch/MultipleCustomHook';
 // import { FormCustomHook } from './components/useEffect/FormCustomHook';
@@ -11,7 +12,7 @@ import { LayoutEffect } from './components/useLayoutEffect/Layouteffect';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LayoutEffect />
+    <Memorize />
   </React.StrictMode>,
   document.getElementById('root')
 );

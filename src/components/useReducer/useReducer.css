@@ -1,0 +1,7 @@
+.list-group-item {
+  cursor: pointer;
+}
+
+.complete {
+  text-decoration: line-through;
+}

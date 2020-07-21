@@ -25,6 +25,15 @@ export const Todo = () => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
+  const handleDelete = (todoID) => {
+    const action = {
+      type: 'delete',
+      payload: todoID
+    }
+
+    dispatch(action);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -63,7 +72,7 @@ export const Todo = () => {
           todos.map((todo, i) => (
           <li key={todo.id} className="list-group-item d-flex justify-content-between">
             <label className="m-0">{i + 1} - {todo.desc}</label>
-            <button className="btn btn-danger btn-sm">X</button>
+            <button className="btn btn-danger btn-sm" onClick={() => handleDelete(todo.id)}>X</button>
           </li>
           ))
         }

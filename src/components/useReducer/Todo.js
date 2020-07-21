@@ -12,6 +12,23 @@ export const Todo = () => {
 
   const [todos, dispatch] = useReducer(todoReducer, initialState)
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const newTodo = {
+      id: new Date().getTime(),
+      desc: 'New ToDo',
+      done: false
+    }
+    
+    const action = {
+      type: 'add',
+      payload: newTodo
+    }
+
+    dispatch(action);
+  }
+
   return (
     <div className="text-center p-5">
       <h1 className="text-primary">Todo App ({todos.length})</h1>
@@ -19,9 +36,9 @@ export const Todo = () => {
 
       {/* Form */}
 
-      <form className="mb-3">
+      <form className="mb-3" onSubmit={handleSubmit}>
         <input type="text" name="desc" placeholder="ToDo "/>
-        <button className="btn btn-success btn-sm mb-1">Add ToDo</button>
+        <button type="submit" className="btn btn-success btn-sm mb-1">Add ToDo</button>
       </form>
 
       <ul className="list-group text-left">

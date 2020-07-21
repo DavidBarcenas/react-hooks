@@ -21,7 +21,6 @@ export const Todo = () => {
   })
 
   useEffect(() => {
-    console.log('Entra al effect')
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
@@ -32,6 +31,13 @@ export const Todo = () => {
     }
 
     dispatch(action);
+  }
+
+  const handleToogle = (todoID) => {
+    dispatch({
+      type: 'toggle',
+      payload: todoID
+    })
   }
 
   const handleSubmit = (e) => {
@@ -70,8 +76,8 @@ export const Todo = () => {
       <ul className="list-group text-left">
         {
           todos.map((todo, i) => (
-          <li key={todo.id} className="list-group-item d-flex justify-content-between">
-            <label className="m-0">{i + 1} - {todo.desc}</label>
+          <li key={todo.id} className="list-group-item d-flex justify-content-between align-items-center">
+            <label className={`${todo.done && 'complete'} mb-0`} onClick={() => handleToogle(todo.id)}>{i + 1} - {todo.desc}</label>
             <button className="btn btn-danger btn-sm" onClick={() => handleDelete(todo.id)}>X</button>
           </li>
           ))

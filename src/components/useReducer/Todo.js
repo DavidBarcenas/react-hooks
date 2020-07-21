@@ -1,23 +1,38 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { todoReducer } from './todoReducer'
+import { useForm } from '../../hooks/useForm'
 import './useReducer.css'
 
-const initialState = [{
-  id: new Date().getTime(),
-  desc: 'Learning useReducer',
-  done: false
-}]
+// const initialState = [{
+//   id: new Date().getTime(),
+//   desc: 'Learning useReducer',
+//   done: false
+// }]
+
+const init = () => {
+  return JSON.parse(localStorage.getItem('todos')) || [];
+}
 
 export const Todo = () => {
 
-  const [todos, dispatch] = useReducer(todoReducer, initialState)
+  const [todos, dispatch] = useReducer(todoReducer, [], init)
+  const [{desc}, handleInputchange, reset] = useForm({
+    desc: ''
+  })
+
+  useEffect(() => {
+    console.log('Entra al effect')
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if(desc.trim().length <= 1) { return; }
+
     const newTodo = {
       id: new Date().getTime(),
-      desc: 'New ToDo',
+      desc,
       done: false
     }
     
@@ -26,7 +41,9 @@ export const Todo = () => {
       payload: newTodo
     }
 
+    
     dispatch(action);
+    reset();
   }
 
   return (
@@ -37,7 +54,7 @@ export const Todo = () => {
       {/* Form */}
 
       <form className="mb-3" onSubmit={handleSubmit}>
-        <input type="text" name="desc" placeholder="ToDo "/>
+        <input type="text" name="desc" placeholder="ToDo" value={desc} onChange={handleInputchange}/>
         <button type="submit" className="btn btn-success btn-sm mb-1">Add ToDo</button>
       </form>
 

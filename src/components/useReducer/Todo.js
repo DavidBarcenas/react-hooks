@@ -2,6 +2,7 @@ import React, { useReducer, useEffect } from 'react'
 import { todoReducer } from './todoReducer'
 import { useForm } from '../../hooks/useForm'
 import './useReducer.css'
+import { TodoList } from './TodoList'
 
 // const initialState = [{
 //   id: new Date().getTime(),
@@ -25,37 +26,19 @@ export const Todo = () => {
   }, [todos])
 
   const handleDelete = (todoID) => {
-    const action = {
-      type: 'delete',
-      payload: todoID
-    }
-
+    const action = { type: 'delete', payload: todoID }
     dispatch(action);
   }
 
-  const handleToogle = (todoID) => {
-    dispatch({
-      type: 'toggle',
-      payload: todoID
-    })
-  }
+  const handleToogle = (todoID) => dispatch({ type: 'toggle', payload: todoID });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if(desc.trim().length <= 1) { return; }
 
-    const newTodo = {
-      id: new Date().getTime(),
-      desc,
-      done: false
-    }
-    
-    const action = {
-      type: 'add',
-      payload: newTodo
-    }
-
+    const newTodo = { id: new Date().getTime(), desc, done: false }
+    const action = { type: 'add', payload: newTodo }
     
     dispatch(action);
     reset();
@@ -73,17 +56,11 @@ export const Todo = () => {
         <button type="submit" className="btn btn-success btn-sm mb-1">Add ToDo</button>
       </form>
 
-      <ul className="list-group text-left">
-        {
-          todos.map((todo, i) => (
-          <li key={todo.id} className="list-group-item d-flex justify-content-between align-items-center">
-            <label className={`${todo.done && 'complete'} mb-0`} onClick={() => handleToogle(todo.id)}>{i + 1} - {todo.desc}</label>
-            <button className="btn btn-danger btn-sm" onClick={() => handleDelete(todo.id)}>X</button>
-          </li>
-          ))
-        }
-      </ul>
-
+      <TodoList 
+        todos={todos}
+        handleToogle={handleToogle}
+        handleDelete={handleDelete} 
+      />
     </div>
   )
 }

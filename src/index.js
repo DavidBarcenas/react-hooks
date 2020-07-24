@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Todo } from './components/useReducer/Todo';
+import { MainApp } from './components/useContext/MainApp';
+// import { Todo } from './components/useReducer/Todo';
 // import { Padre } from './components/useMemo/tarea-memo/Padre';
 // import { CallBackHook } from './components/useMemo/CallBackHook';
 // import { MemoHook } from './components/useMemo/MemoHook';
@@ -16,7 +17,7 @@ import { Todo } from './components/useReducer/Todo';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Todo />
+    <MainApp />
   </React.StrictMode>,
   document.getElementById('root')
 );

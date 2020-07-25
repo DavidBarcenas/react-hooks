@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HooksApp /> testing should render correctly 1`] = `
+<div
+  className="btn btn-primary"
+>
+  <h1>
+    Hola Mundo
+  </h1>
+</div>
+`;

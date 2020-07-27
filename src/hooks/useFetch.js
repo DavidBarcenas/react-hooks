@@ -22,6 +22,13 @@ import { useState, useEffect, useRef } from "react"
           })
         }
       })
+      .catch(err => {
+        setstate({
+          data: null,
+          loading: false,
+          error: 'No se pudo cargar la info'
+        })
+      })
 
    }, [url])
 

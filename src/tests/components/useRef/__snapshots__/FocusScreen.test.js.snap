@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FocusScreen /> testing should render correctly 1`] = `
+<div
+  className="text-center p-5"
+>
+  <h1
+    className="text-success"
+  >
+    Focus Screen
+  </h1>
+  <hr />
+  <button
+    className="btn btn-danger mt-2"
+    onClick={[Function]}
+  >
+    show / hide
+  </button>
+</div>
+`;
